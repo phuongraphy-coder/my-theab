@@ -1,0 +1,1 @@
+(function(){function m(){var h=document.querySelector('header');if(h)document.documentElement.style.setProperty('--hh',h.offsetHeight+'px')}m();addEventListener('resize',m);addEventListener('load',m);if(document.fonts&&document.fonts.ready)document.fonts.ready.then(m);try{new ResizeObserver(m).observe(document.querySelector('header'))}catch(e){}})();
