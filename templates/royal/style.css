@@ -707,3 +707,6 @@ html body #cover>.ctitle::after,html body #cover>.cline::after{
   animation:sweep2 5.2s ease-in-out infinite}
 @media (prefers-reduced-motion:reduce){html body #cover>*,html body #cover>.ctitle::after,html body #cover>.cline::after{animation:none!important}}
 
+/* ផែនទីដូច Premium៖ ច្បាស់ មិនមានពណ៌ស្រអាប់ ធំជាង */
+.rmap{height:340px;max-width:100%;margin:16px auto 20px;border-radius:20px}
+.rmap iframe{filter:none;border-radius:inherit}
