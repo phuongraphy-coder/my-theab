@@ -119,7 +119,7 @@
   $("qk").onclick=function(){qs(true)};$("qu").onclick=function(){qs(false)};
   var VN="ភូមិពោធិ៍អណ្ដោត ឃុំជើងភ្នំ ស្រុកបាភ្នំ ខេត្តព្រៃវែង";
   $("gmap").href="https://www.google.com/maps/search/?api=1&query="+encodeURIComponent(VN);
-  (function(){var box=document.querySelector(".rmap");if(!box)return;var f=document.createElement("iframe");f.title="Google Map";f.loading="lazy";f.referrerPolicy="no-referrer-when-downgrade";f.allowFullscreen=true;f.src="https://www.google.com/maps?q="+encodeURIComponent(VN)+"&hl=km&z=14&output=embed";box.appendChild(f);
+  (function(){var box=document.querySelector(".rmap");if(!box)return;var f=document.createElement("iframe");f.title="Google Map";f.loading="lazy";f.referrerPolicy="no-referrer-when-downgrade";f.allowFullscreen=true;f.src="https://www.google.com/maps?q="+encodeURIComponent(VN)+"&hl=km&z=17&output=embed";box.appendChild(f);
     /* បើ browser រារាំងផែនទី (CSP/កម្មវិធីក្នុង) → លាក់ iframe ហើយចុចលើប្រអប់បើក Google Maps */
     document.addEventListener("securitypolicyviolation",function(e){if(/frame|child/.test(e.violatedDirective)){f.style.display="none";box.style.cursor="pointer";box.onclick=function(){window.open($("gmap").href,"_blank","noopener")}}})})();
   (function(){var ymd=EV.y+p2(EV.m)+p2(EV.d),d=ymd+"T"+p2(EV.hh)+p2(EV.mm)+"00",e=ymd+"T"+p2(EV.hh+4)+p2(EV.mm)+"00";
