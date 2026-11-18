@@ -1,0 +1,103 @@
+<!DOCTYPE html><html lang="km"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><title>My Theab</title>
+<script src="js/config.js"></script>
+<script src="js/visitor-counter.js"></script>
+<script id="ovr">window.OVR=/*OVR_START*/{"tpl":1,"t1":{"dt":"2026-11-29T17:00"},"t2":{}}/*OVR_END*/;</script>
+<script src="js/template-loader.js"></script>
+<script>MTL.write("premium","inv")</script>
+<script>MTL.write("standard","inv2")</script>
+<script src="js/template-overrides.js"></script>
+<link href="https://fonts.googleapis.com/css2?family=Kantumruy+Pro:wght@400;600;700&family=Moul&display=swap" rel="stylesheet">
+<script>MTL.write("royal","inv3")</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+<link rel="stylesheet" href="css/app.css">
+<link rel="stylesheet" href="css/editor-toolbar.css">
+<link rel="stylesheet" href="css/gm-options.css">
+<link rel="stylesheet" href="css/buy-dialog.css">
+<link rel="stylesheet" href="css/login.css">
+<link rel="stylesheet" href="css/license.css">
+<meta name="theme-color" content="#9a6340"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="format-detection" content="telephone=no"><link rel="icon" href="favicon.svg" type="image/svg+xml"><link rel="stylesheet" href="css/responsive.css">
+</head><body>
+<header><img class="lg" src="assets/img-812183ca16.png" alt="My Theab"></header>
+<script src="js/header-height.js"></script>
+<main>
+<div class="tabs hide" id="tbs"><button id="b0" class="on">ម៉ូតធៀប</button><button id="b1">បញ្ជីភ្ញៀវ</button></div>
+
+<section id="t0"><div class="wl"><b>សូមស្វាគមន៍ !</b><span>ជ្រើសរើសម៉ូតធៀបដែលអ្នកពេញចិត្ត ហើយចាប់ផ្តើមកែប្រែបានភ្លាមៗ</span></div><div class="tp">
+<div class="tc pm t3c"><span class="tg">&#10022; Royal</span><div class="th"><iframe id="thf3" tabindex="-1" title="preview"></iframe></div>
+<div class="tn"><span>Wedding</span><span class="pr0" id="pr3"></span></div><ul class="ft"><li>ម៉ូតថ្មី · បៃតងមរកត + មាស</li><li>កម្រងរូបភាព គ្មានកំណត់</li><li>កម្រងវីដេអូ</li><li>បទចម្រៀង · KHQR</li><li>បញ្ជីភ្ញៀវ គ្មានកំណត់</li></ul>
+<div class="tr"><button class="use" id="use3"><span>&#9998;</span>បើកប្រើ</button><button class="btn" id="vw3">&#9673; មើល</button></div></div>
+<div class="tc pm"><span class="tg">★ Premium</span><div class="th"><iframe id="thf" tabindex="-1" title="preview"></iframe></div>
+<div class="tn"><span>Wedding</span><span class="pr0" id="pr1"></span></div><ul class="ft"><li>កម្រងរូបភាព គ្មានកំណត់</li><li>កម្រងវីដេអូ</li><li>រូបកូនប្រុស និងកូនស្រី</li><li>ផ្ទាំងរាប់ថយក្រោយ (ប្តូររូបបាន)</li><li>បទចម្រៀង · KHQR</li><li>បញ្ជីភ្ញៀវ គ្មានកំណត់</li></ul>
+<div class="tr"><button class="use" id="use"><span>✎</span>បើកប្រើ</button><button class="btn" id="vw">◉ មើល</button></div></div>
+<div class="tc sd"><span class="tg">Standard</span><div class="th"><iframe id="thf2" tabindex="-1" title="preview"></iframe></div>
+<div class="tn"><span>Wedding</span><span class="pr0" id="pr2"></span></div><ul class="ft"><li>កម្រងរូបភាព អតិបរមា ៦សន្លឹក</li><li>បទចម្រៀង · KHQR</li><li>បញ្ជីភ្ញៀវ អតិបរមា ១០នាក់</li><li class="no">កម្រងវីដេអូ</li><li class="no">រូបកូនប្រុស និងកូនស្រី</li><li class="no">រូបផ្ទាំងរាប់ថយក្រោយ</li></ul>
+<div class="tr"><button class="use" id="use2"><span>✎</span>បើកប្រើ</button><button class="btn" id="vw2">◉ មើល</button></div></div>
+</div></section>
+
+<section id="t1" class="hide"><div class="hd"><h2>ការគ្រប់គ្រងភ្ញៀវ</h2><span class="pill">👤 <span id="cnt">0</span></span><button class="ic" id="gs" title="ការកំណត់" style="width:36px;height:36px;font-size:16px">⚙</button><button class="btn" id="bk">← កែម៉ូត</button></div>
+<div class="card"><div class="bar"><label class="sb">🔍<input id="q" placeholder="ស្វែងរក ..."></label><button class="ic" id="wr" title="ទាញសារជូនពរថ្មី" aria-label="ទាញសារជូនពរថ្មី">↻</button><button class="ic" id="fb" title="ត្រង">⛛</button><button class="btn pri" id="add" style="padding:13px 20px">+ បន្ថែមថ្មី</button></div>
+<div id="fpn" class="hide"><select id="gf"></select></div><div id="wss" class="mt" style="font-size:12.5px;margin-top:8px"></div><div class="gh"><span>ឈ្មោះ</span><span>ក្រុម</span><span>សារជូនពរ</span><span></span></div><div id="ls"></div><div id="uw"></div></div></section>
+<section id="t2" class="hide"><div class="svb"><button class="btn pri" id="bkt" type="button">← ប្តូរម៉ូតធៀប</button><button class="btn pri" id="nx" type="button">បន្ទាប់៖ បញ្ជីភ្ញៀវ →</button><span id="svt">ការកែនឹងរក្សាទុកក្នុង browser ស្វ័យប្រវត្តិ</span><button class="btn hide" id="dl" type="button">⤓ ទាញយកឯកសារថ្មី</button><button class="btn pri" id="svbtn" type="button">💾 រក្សាទុក</button></div><div class="ed">
+<div class="ep"><div class="eh"><b>✦ កែប្រែព័ត៌មានសំបុត្រ</b><small>ការកែបង្ហាញភ្លាមៗនៅផ្ទាំងខាងស្តាំ</small></div>
+
+<div class="eb">
+<div class="cd"><h4>💠 Logo</h4><div class="pr"><img id="phi" class="hide" alt=""><label class="btn up">⬆ ផ្ទុករូបឡើង<input type="file" id="phf" accept="image/*" class="hide"></label></div></div>
+<div class="cd"><h4>👨‍👩 ឈ្មោះមាតាបិតា</h4><div class="g2"><div><small>ខាងកូនប្រុស</small><input id="e_f1"><input id="e_m1"></div><div><small>ខាងកូនស្រី</small><input id="e_f2"><input id="e_m2"></div></div></div>
+<div class="cd"><h4>💍 កូនប្រុស និងកូនស្រី</h4><small>ឈ្មោះកូនប្រុស</small><input id="e_gn"><small>ឈ្មោះកូនស្រី</small><input id="e_bn"></div>
+<div class="cd t1o"><h4>📸 រូបកូនប្រុស និងកូនស្រី</h4><div class="g2"><div><small>កូនប្រុស</small><img id="ppg" class="qp" style="height:150px" alt=""><div class="pbt"><label class="btn up">⬆ ប្តូររូប<input type="file" id="pgf" accept="image/*" class="hide"></label><button type="button" class="btn" id="pgr" title="ប្រើរូបដើម" aria-label="ប្រើរូបដើម">↺</button></div></div><div><small>កូនស្រី</small><img id="ppb" class="qp" style="height:150px" alt=""><div class="pbt"><label class="btn up">⬆ ប្តូររូប<input type="file" id="pbf" accept="image/*" class="hide"></label><button type="button" class="btn" id="pbr" title="ប្រើរូបដើម" aria-label="ប្រើរូបដើម">↺</button></div></div></div><small>ណែនាំ៖ ប្រើរូបបញ្ឈរ ឃើញមុខនៅផ្នែកខាងលើ ដើម្បីកុំឱ្យត្រូវកាត់។</small></div>
+<div class="cd"><h4>🎨 ពណ៌អក្សរ និងប៊ូតុង</h4><div class="clr"><label for="e_cg">ចំណងជើង និងតុបតែង</label><input type="color" id="e_cg"><button type="button" class="btn" id="e_cgr" title="ប្រើពណ៌ដើម" aria-label="ប្រើពណ៌ដើម">↺</button></div><div class="clr"><label for="e_ci">អក្សរធម្មតា</label><input type="color" id="e_ci"><button type="button" class="btn" id="e_cir" title="ប្រើពណ៌ដើម" aria-label="ប្រើពណ៌ដើម">↺</button></div><div class="clr"><label for="e_cb">ប៊ូតុង</label><input type="color" id="e_cb"><button type="button" class="btn" id="e_cbr" title="ប្រើពណ៌ដើម" aria-label="ប្រើពណ៌ដើម">↺</button></div><small>ពណ៌អក្សរប្រើពេលភ្ញៀវបើកក្នុងរបៀបភ្លឺ (light mode)។ ពណ៌ប៊ូតុងប្រើគ្រប់របៀប។</small></div>
+<div class="cd"><h4>📅 ថ្ងៃ និងម៉ោង</h4><small>ថ្ងៃ និងម៉ោងពិធី</small><input type="datetime-local" id="e_dt"><small>ថ្ងៃខែចន្ទគតិ</small><input id="e_lu"><small>ម៉ោង (អក្សរដែលបង្ហាញ)</small><input id="e_tm"></div>
+<div class="cd t1o"><h4>⏳ ថ្ងៃរាប់ថយក្រោយ</h4><small>រូបផ្ទាំងរាប់ថយក្រោយ</small><img id="phr" class="qp" style="height:150px" alt=""><div class="pbt"><label class="btn up">⬆ ប្តូររូប<input type="file" id="hrf" accept="image/*" class="hide"></label><button type="button" class="btn" id="hrr" title="ប្រើរូបដើម" aria-label="ប្រើរូបដើម">↺</button></div><small>ចំនួនថ្ងៃរាប់ថយក្រោយ គណនាពី «ថ្ងៃ និងម៉ោងពិធី» ខាងលើ។</small></div>
+<div class="cd"><h4>📍 ទីតាំង</h4><small>អាសយដ្ឋាន</small><textarea id="e_vn" rows="2"></textarea><small id="mpl">ផែនទី (កូអរដោណេ ឧ. 11.23,105.39 ឬទុកទទេដើម្បីប្រើអាសយដ្ឋាន)</small><input id="e_mp"></div>
+<div class="cd"><h4 style="display:flex;justify-content:space-between;align-items:center;gap:8px;flex-wrap:wrap">🗓 របៀបវារៈកម្មវិធី<span id="agm" style="display:none;gap:4px"><button type="button" id="ag1" style="border:1px solid #cdbfae;border-radius:999px;padding:4px 12px;font:inherit;font-size:12px;cursor:pointer;background:#fff;color:inherit;margin:0;box-shadow:none">🖼 មានរូប</button><button type="button" id="ag0" style="border:1px solid #cdbfae;border-radius:999px;padding:4px 12px;font:inherit;font-size:12px;cursor:pointer;background:#fff;color:inherit;margin:0;box-shadow:none">☰ ធម្មតា</button></span></h4><small>ថ្ងៃទី១ — កាលបរិច្ឆេទ</small><input id="e_d1"><small>មួយបន្ទាត់ក្នុងមួយកម្មវិធី៖ ម៉ោង | ឈ្មោះកម្មវិធី</small><textarea id="e_a1" rows="5"></textarea><small>ថ្ងៃទី២ — កាលបរិច្ឆេទ</small><input id="e_d2"><textarea id="e_a2" rows="8"></textarea></div>
+<div class="cd"><h4>📷 កម្រងរូបភាព</h4><div id="gl2" class="gg"></div><label class="btn up" id="gpl">＋ បន្ថែមរូប<input type="file" id="gpf" accept="image/*" multiple class="hide"></label><small id="gcn" style="display:inline-block;margin-left:10px"></small><div id="gmw" style="display:none"><small>ទម្រង់បង្ហាញរូបភាព</small><div class="gmo"><button type="button" class="gmb" id="gm0"><span class="gmi g"><i></i><i></i><i></i><i></i></span><span>ក្រឡា (Grid)</span><b class="gmr"></b></button><button type="button" class="gmb" id="gm1"><span class="gmi c"><i></i><i></i><i></i></span><span>អូសមើល (Carousel)</span><b class="gmr"></b></button></div></div></div>
+<div class="cd t1o"><h4>🎬 កម្រងវីដេអូ</h4><img id="vpv" class="qp" style="height:150px" alt=""><small id="vn">វីដេអូបច្ចុប្បន្ន</small><label class="btn up">⬆ ជំនួសវីដេអូ (មិនលើស 25MB)<input type="file" id="vf" accept="video/*" class="hide"></label></div> <div class="cd" id="ovc" style="display:none"><h4>🎬 វីដេអូពេលបើកសំបុត្រ</h4><small id="ovn">វីដេអូបច្ចុប្បន្ន</small><label class="btn up">\u2B06 ជំនួសវីដេអូ (មិនលើស 25MB)<input type="file" id="ovf" accept="video/*" class="hide"></label></div>
+<div class="cd"><h4>🎵 បទចម្រៀង</h4><audio id="aup" controls preload="none" style="width:100%"></audio><small id="an">បទបច្ចុប្បន្ន</small><div class="pbt"><label class="btn up">⬆ ប្តូរបទចម្រៀង (មិនលើស 15MB)<input type="file" id="af" accept="audio/*,.mp3,.m4a,.aac,.wav,.ogg" class="hide"></label><button type="button" class="btn" id="ar" title="ប្រើបទដើម" aria-label="ប្រើបទដើម">↺</button></div></div>
+<div class="cd"><h4>🖼 Background</h4><img id="bgp" class="qp" style="height:170px" alt=""><div class="pbt"><label class="btn up">⬆ ប្តូររូបផ្ទៃខាងក្រោយ<input type="file" id="bgf" accept="image/*" class="hide"></label><button type="button" class="btn" id="bgr" title="ប្រើរូបដើម" aria-label="ប្រើរូបដើម">↺</button></div><small>ណែនាំ៖ ប្រើរូបបញ្ឈរ ពណ៌ស្រាល ដើម្បីឱ្យអក្សរងាយអាន។ មិនបង្ហាញក្នុងរបៀបងងឹត (dark mode)។</small></div>
+<div class="cd"><h4>💳 KHQR</h4><div class="g2"><div><small>រៀល</small><img id="qkp" class="qp" alt=""><label class="btn up">⬆ ប្តូរ<input type="file" id="qkf" accept="image/*" class="hide"></label></div><div><small>USD</small><img id="qup" class="qp" alt=""><label class="btn up">⬆ ប្តូរ<input type="file" id="quf" accept="image/*" class="hide"></label></div></div></div>
+</div>
+<input type="file" id="sf" accept=".html" class="hide"></div>
+<div class="pv"><iframe id="pvf" title="preview"></iframe></div></div></section>
+</main>
+
+<dialog id="dlg"><div id="f"><h3 id="dt" style="margin-top:0">បន្ថែមភ្ញៀវ</h3><label>ឈ្មោះភ្ញៀវ (បង្ហាញលើសំបុត្រ)</label><input id="fn" required><label>ក្រុម (មិនបំពេញក៏បាន)</label><input id="fg" list="gl"><datalist id="gl"></datalist>
+<div style="text-align:right"><button type="button" class="btn" id="cn">បោះបង់</button> <button class="btn pri" id="sv" type="button">រក្សាទុក</button></div></div></dialog>
+
+<dialog class="fc" id="sd"><button class="ic x" type="button" aria-label="បិទ">✕</button><div style="color:var(--au)">— ➤ —</div><h3>តំណអញ្ជើញ</h3><div class="nm" id="sn"></div>
+<div class="lk"><span>🔗</span><input id="sl" readonly><button class="gold" id="cl">ចម្លងតែតំណរភ្ជាប់</button></div>
+<div class="g3"><button id="cm"><i>✉</i>ចម្លងទាំងសារ</button><button id="dw"><i>⤓</i>ទាញយកសំបុត្រ</button><button id="rs"><i>↺</i>កំណត់ឡើងវិញ</button></div></dialog>
+
+<dialog class="fc" id="qd"><button class="ic x" type="button" aria-label="បិទ">✕</button>
+<div style="color:#999;font-size:13px;margin-top:6px">សូមគោរពអញ្ជើញ</div><div class="qn" id="qn"></div>
+<div class="qf"><b class="cn a"></b><b class="cn b"></b><b class="cn c"></b><b class="cn d"></b><div id="qb"></div></div>
+<div class="qc">សូមស្កេន QR នេះ ដើម្បីបើកសំបុត្រអញ្ជើញ</div><div id="ql" class="hide"></div>
+<div style="display:flex;gap:10px;margin-top:16px"><button class="gold" id="qdw" type="button" style="flex:1">⤓ ទាញយក QR</button><button class="btn" id="qsh" type="button" style="flex:1;border-radius:28px">↗ ចែករំលែក</button></div>
+<div class="qc" style="margin-top:14px;font-size:11px">ផ្តល់ជូនដោយ <img class="lg2" src="assets/img-812183ca16.png" alt="My Theab"></div></dialog>
+
+<dialog class="fc" id="md"><button class="ic x" type="button" aria-label="បិទ">✕</button><h3 id="mn"></h3><div class="mb"><button class="btn" id="me">✎ កែឈ្មោះ</button><button class="btn" id="mdl" style="color:var(--r)">🗑 លុប</button></div></dialog>
+
+<dialog id="ds"><h3 style="margin-top:0">កែព័ត៌មាន</h3>
+<label>តំណសំបុត្រ (បើទុកទទេ ប្រើតំណទំព័រនេះ។ បើបើកពីកុំព្យូទ័រ ត្រូវដាក់តំណដែលបាន upload)</label><input id="base" placeholder="https://your-site.com/invitation.html">
+<label>សារផ្ញើ (ប្រើ {name} និង {link})</label><textarea id="msg" rows="4"></textarea>
+<div id="shb" style="margin:16px 0 4px;padding:14px;border:1px solid var(--bd,#ddd);border-radius:14px;background:#faf8f5">
+<div style="display:flex;align-items:center;justify-content:space-between;gap:12px"><b>🔗 តំណខ្លី + រូបពេលចែក</b><input type="checkbox" id="sho" aria-label="ប្រើតំណខ្លី" style="width:22px;height:22px;margin:0;flex:none;accent-color:#9b5f3a"></div>
+<div style="color:#777;font-size:12.5px;margin:4px 0 12px">Telegram / Facebook បង្ហាញរូប និងឈ្មោះភ្ញៀវ</div>
+<div style="display:flex;align-items:center;gap:10px"><img id="simp" alt="" style="width:84px;height:44px;object-fit:cover;border-radius:8px;background:#eee;display:none"><label class="btn up" style="margin:0">⬆ ជ្រើសរូប<input type="file" id="sim" accept="image/*" class="hide"></label></div>
+<button class="btn pri" id="szip" type="button" style="width:100%;margin-top:10px">⤓ ទាញយក ZIP</button>
+<div style="color:#777;font-size:12px;line-height:1.6;margin-top:8px">upload ថត <b>g</b> និង <b>og.jpg</b> ទៅថតសំបុត្រ រួចទើបធីកប្រអប់ខាងលើ។</div>
+<details style="margin-top:6px"><summary style="font-size:12.5px;color:#777;cursor:pointer">កម្រិតខ្ពស់</summary><input id="sbase" placeholder="ថតរក្សាតំណខ្លី https://your-site.com/" style="margin-top:6px"></details>
+</div>
+<p style="color:#777">ឧទាហរណ៍តំណ៖ <b id="ex" style="word-break:break-all"></b></p>
+<button class="btn" id="exp">នាំចេញទិន្នន័យ</button> <button class="btn" id="imp">នាំចូលទិន្នន័យ</button><input type="file" id="fi" accept=".json" class="hide">
+<div style="text-align:right;margin-top:14px"><button class="btn pri" id="ok">រួចរាល់</button></div></dialog>
+<dialog id="vd"><div id="vb"></div><button class="ic" id="vx" type="button" aria-label="បិទ">✕</button></dialog>
+<dialog id="cf"><p id="cq" style="margin-top:0"></p><div style="text-align:right"><button class="btn" id="cno" type="button">បោះបង់</button> <button class="btn pri" id="cy" type="button">យល់ព្រម</button></div></dialog>
+<div id="toast"></div>
+
+<script src="js/price-badges.js"></script>
+<script src="js/app.js"></script>
+<script src="js/telegram-button.js"></script>
+
+<script src="js/license.js"></script>
+<script src="js/login.js"></script>
+</body></html>

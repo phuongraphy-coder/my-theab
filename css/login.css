@@ -1,0 +1,19 @@
+/* ប្រព័ន្ធ Login / Register */
+#auth{position:fixed;inset:0;z-index:200;background:var(--g);overflow:auto;display:flex;justify-content:center;padding:24px 16px}
+#auth.hide{display:none!important}
+.ac{width:100%;max-width:440px;background:#fff;border-radius:28px;box-shadow:0 8px 30px #0002;padding:26px 24px 22px;text-align:center;margin:auto}
+.ac>img{height:64px;max-width:70%;object-fit:contain}
+.ac h1{font:700 24px/1.5 'Kantumruy Pro',system-ui,sans-serif;margin:8px 0 2px}
+.ac .s{margin:0 0 14px;color:var(--mut);font-size:15px}
+.ab{display:flex;align-items:center;justify-content:center;gap:10px;width:100%;height:50px;border-radius:999px;border:1px solid var(--bd);background:#fff;font:700 16px 'Kantumruy Pro',system-ui,sans-serif;color:var(--ink);cursor:pointer;margin:10px 0}
+.ab.atg{background:#0088cc;color:#fff;border-color:#0088cc}.ab.rd{background:#d5002b;color:#fff;border-color:#d5002b;margin-top:16px}.ab:disabled{opacity:.6;cursor:wait}
+.ad{display:flex;align-items:center;gap:12px;color:var(--mut);margin:16px 0}.ad:before,.ad:after{content:"";flex:1;height:1px;background:var(--ln)}
+.al{display:block;text-align:left;font-weight:600;margin:12px 0 6px}
+.ai{width:100%;height:46px;border:1px solid var(--bd);border-radius:999px;padding:0 18px;font:inherit;font-size:15px;background:#fff;color:var(--ink)}
+.aw{position:relative}.aw .ai{padding-right:48px}.aw .ey{position:absolute;right:12px;top:50%;transform:translateY(-50%);border:0;background:none;cursor:pointer;font-size:18px;opacity:.6}
+.ah{text-align:left;font-size:12px;color:var(--mut);margin:4px 0 0 6px}
+.aerr{color:#c62828;font-size:14px;min-height:20px;margin:8px 0 0}
+.alk{background:none;border:0;color:#d5002b;font:inherit;font-weight:700;text-decoration:underline;cursor:pointer;padding:0}
+.afg{text-align:right;margin:8px 0 0}.afg .alk{color:var(--ink);text-decoration:none;font-weight:400}
+.aft{margin:14px 0 0;font-size:15px}
+#gbtn{display:flex;justify-content:center;margin:10px 0;min-height:44px}
