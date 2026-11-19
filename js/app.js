@@ -172,10 +172,10 @@ document.querySelector('.eb').addEventListener('focusin',pvGo);document.querySel
 var _sv=svOv;svOv=function(){_sv();var t=new Date(),z=function(n){return('0'+n).slice(-2)};$('svt').textContent='បានរក្សាទុកក្នុង browser ម៉ោង '+z(t.getHours())+':'+z(t.getMinutes())};
 var CLOUD_KEY='main';
 function cfgObj(){var cur=window.__edt||selT(),o={tpl:cur};[1,2,3].forEach(function(t){var x=Object.assign({},BT(t));if(t===cur)Object.assign(x,OV);else Object.assign(x,lsOv(t),HV[t]||{});if(t===2&&x.gl&&x.gl.length>6)x.gl=x.gl.slice(0,6);o['t'+t]=x});return o}
-function cloudPost(rl,data){return fetch(rl,{method:'POST',headers:{'Content-Type':'text/plain;charset=utf-8'},body:JSON.stringify({action:'cfg_save',key:CLOUD_KEY,data:data})}).then(function(r){return r.json()})}
+function cloudPost(rl,data){return fetch(rl,{method:'POST',headers:{'Content-Type':'text/plain;charset=utf-8'},body:JSON.stringify({action:'cfg_save',key:CLOUD_KEY,data:data})}).then(function(r){return r.text().then(function(t){var j;try{j=JSON.parse(t)}catch(e){throw'ឆ្លើយតបមិនមែន JSON (HTTP '+r.status+'): '+t.replace(/<[^>]*>/g,' ').replace(/\s+/g,' ').trim().slice(0,90)}return j})})}
 function cloudSave(){var rl=(window.TGCFG||{}).relay;if(!rl)return Promise.reject('norelay');var data=JSON.stringify(cfgObj());toast('កំពុងរក្សាទុកលើ Cloud...');
 return cloudPost(rl,data).then(function(j){if(!j||!j.ok)throw((j&&j.error)||'fail');toast('☁ រក្សាទុកលើ Cloud រួចរាល់ ('+Math.round(data.length/1024)+' KB) · ភ្ញៀវឃើញភ្លាមៗ')})}
-$('svbtn').onclick=function(){svOv();cloudSave().catch(function(e){toast('Cloud មិនដំណើរការ · សូមពិនិត្យតំណ relay ក្នុង config.js និងការ Deploy Apps Script')})};$('bkt').onclick=function(){tab(0);$('thf').srcdoc=invHTML(1);$('thf2').srcdoc=invHTML(2);$('thf3').srcdoc=invHTML(3)};
+$('svbtn').onclick=function(){svOv();cloudSave().catch(function(e){var m=String((e&&e.message)||e);console.error('Cloud save failed:',e);toast('Cloud មិនដំណើរការ៖ '+(m==='Failed to fetch'?'ភ្ជាប់ Apps Script មិនបាន (តំណខុស ឬ Deploy មិនទាន់ជា Anyone)':m))})};$('bkt').onclick=function(){tab(0);$('thf').srcdoc=invHTML(1);$('thf2').srcdoc=invHTML(2);$('thf3').srcdoc=invHTML(3)};
 var _le=loadEd;loadEd=function(){_le.apply(this,arguments);loadPh();loadHr();render();document.querySelectorAll('.t1o').forEach(function(n){n.inert=window.__tpl==2})};
 $('thf').srcdoc=invHTML(1);$('thf2').srcdoc=invHTML(2);$('thf3').srcdoc=invHTML(3);
 render();
