@@ -172,11 +172,10 @@ document.querySelector('.eb').addEventListener('focusin',pvGo);document.querySel
 var _sv=svOv;svOv=function(){_sv();var t=new Date(),z=function(n){return('0'+n).slice(-2)};$('svt').textContent='បានរក្សាទុកក្នុង browser ម៉ោង '+z(t.getHours())+':'+z(t.getMinutes())};
 var CLOUD_KEY='main';
 function cfgObj(){var cur=window.__edt||selT(),o={tpl:cur};[1,2,3].forEach(function(t){var x=Object.assign({},BT(t));if(t===cur)Object.assign(x,OV);else Object.assign(x,lsOv(t),HV[t]||{});if(t===2&&x.gl&&x.gl.length>6)x.gl=x.gl.slice(0,6);o['t'+t]=x});return o}
-function cloudPost(rl,p,data){return fetch(rl,{method:'POST',headers:{'Content-Type':'text/plain;charset=utf-8'},body:JSON.stringify({action:'cfg_save',key:CLOUD_KEY,pass:p,data:data})}).then(function(r){return r.json()})}
-function cloudSave(){var rl=(window.TGCFG||{}).relay;if(!rl)return Promise.reject('norelay');var data=JSON.stringify(cfgObj()),p='';try{p=localStorage.getItem('mt_cpass')||''}catch(e){}toast('កំពុងរក្សាទុកលើ Cloud...');
-/* ព្យាយាមដោយគ្មានពាក្យសម្ងាត់មុន (ប្រសិនបើ Apps Script មិនតម្រូវ) · សួរតែពេល server ទាមទារ */
-return cloudPost(rl,p,data).then(function(j){if(j&&!j.ok&&j.error==='pass'){try{localStorage.removeItem('mt_cpass')}catch(e){}var q=(prompt('ដាក់ពាក្យសម្ងាត់ Cloud (ដែលបានកំណត់ក្នុង Apps Script)')||'').trim();if(!q)throw'nopass';return cloudPost(rl,q,data).then(function(j2){if(j2&&j2.ok){try{localStorage.setItem('mt_cpass',q)}catch(e){}}return j2})}return j}).then(function(j){if(!j||!j.ok){throw(j&&j.error==='pass')?'pass':((j&&j.error)||'fail')}toast('☁ រក្សាទុកលើ Cloud រួចរាល់ ('+Math.round(data.length/1024)+' KB) · ភ្ញៀវឃើញភ្លាមៗ')})}
-$('svbtn').onclick=function(){svOv();cloudSave().catch(function(e){if(e==='pass')toast('ពាក្យសម្ងាត់ Cloud មិនត្រឹមត្រូវ ព្យាយាមម្តងទៀត');else{toast('Cloud មិនដំណើរការ · កំពុងទាញយកឯកសារជំនួស');$('dl').click()}})};$('bkt').onclick=function(){tab(0);$('thf').srcdoc=invHTML(1);$('thf2').srcdoc=invHTML(2);$('thf3').srcdoc=invHTML(3)};
+function cloudPost(rl,data){return fetch(rl,{method:'POST',headers:{'Content-Type':'text/plain;charset=utf-8'},body:JSON.stringify({action:'cfg_save',key:CLOUD_KEY,data:data})}).then(function(r){return r.json()})}
+function cloudSave(){var rl=(window.TGCFG||{}).relay;if(!rl)return Promise.reject('norelay');var data=JSON.stringify(cfgObj());toast('កំពុងរក្សាទុកលើ Cloud...');
+return cloudPost(rl,data).then(function(j){if(!j||!j.ok)throw((j&&j.error)||'fail');toast('☁ រក្សាទុកលើ Cloud រួចរាល់ ('+Math.round(data.length/1024)+' KB) · ភ្ញៀវឃើញភ្លាមៗ')})}
+$('svbtn').onclick=function(){svOv();cloudSave().catch(function(e){toast('Cloud មិនដំណើរការ · សូមពិនិត្យតំណ relay ក្នុង config.js និងការ Deploy Apps Script')})};$('bkt').onclick=function(){tab(0);$('thf').srcdoc=invHTML(1);$('thf2').srcdoc=invHTML(2);$('thf3').srcdoc=invHTML(3)};
 var _le=loadEd;loadEd=function(){_le.apply(this,arguments);loadPh();loadHr();render();document.querySelectorAll('.t1o').forEach(function(n){n.inert=window.__tpl==2})};
 $('thf').srcdoc=invHTML(1);$('thf2').srcdoc=invHTML(2);$('thf3').srcdoc=invHTML(3);
 render();
