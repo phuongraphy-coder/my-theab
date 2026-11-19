@@ -2,7 +2,7 @@
 /* ១) តំណ Relay (សារជូនពរ + រាប់អ្នកចូលមើល) · ២) តម្លៃលក់ · ៣) Login · ៤) លេខកូដបើកសិទ្ធិ */
 
 /* relay = តំណ Google Apps Script Web App (Code.gs) ដែលរក្សាទុកសារជូនពរក្នុង Google Sheet ហើយបញ្ជូនមកបញ្ជីភ្ញៀវដោយស្វ័យប្រវត្តិ។ */
-window.TGCFG={relay:"https://script.google.com/macros/s/AKfycbwBDfFsk6qXYSvg1LBU8f9JRKiAqwaVt6ZveynUd6qoDvW4frSBs2bpWunoibCPbQH0qg/exec"};
+window.TGCFG={relay:"https://script.google.com/macros/s/AKfycbz3FZKf5kVa4j8g-RUK0COTDTv0bJ7UlpjNUFFjsk2OEliujeQv1znQVri7hkly8G5A/exec"};
 
 /* ដាក់តម្លៃលក់នៅទីនេះ (ទុកទទេ = មិនបង្ហាញ) ឧ. {t1:"$25",t2:"$12"} */
 window.MT_PRICE={t1:"",t2:"",t3:""};
