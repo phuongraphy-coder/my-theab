@@ -1,0 +1,20 @@
+# Cloudflare Pages / Netlify: ការកំណត់ cache
+# ដាក់ឯកសារនេះ (ឈ្មោះ _headers គ្មាននាមត្រកូល) នៅឫសថតជាមួយ index.html
+
+# ឯកសារក្នុង assets មានឈ្មោះ hash (img-xxxx.jpg) → cache មួយឆ្នាំ
+/assets/*
+  Cache-Control: public, max-age=31536000, immutable
+
+# កូដ និងម៉ូត៖ cache ខ្លី ដើម្បីឱ្យការកែចូលលឿន
+/js/*
+  Cache-Control: public, max-age=300
+/css/*
+  Cache-Control: public, max-age=300
+/templates/*
+  Cache-Control: public, max-age=300
+
+# ទំព័រដើម៖ ពិនិត្យជាមួយ server រាល់ពេល
+/index.html
+  Cache-Control: public, max-age=0, must-revalidate
+/
+  Cache-Control: public, max-age=0, must-revalidate
