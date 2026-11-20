@@ -19,41 +19,49 @@ function decode(n) {
   } catch (e) { return ''; }
 }
 
-/* រូបទីមួយក្នុងកម្រងរូបភាព៖ ពី OVR (រូបដែលបានកែក្នុង Editor) បើគ្មាន ពីកម្រងលំនាំដើមរបស់ម៉ូត */
-function firstImg(html) {
+/* រូបទីមួយក្នុងកម្រងរូបភាព៖ ១) OVR (រូបដែលបានកែក្នុង Editor) ២) កម្រងលំនាំដើមក្នុង index.html ៣) ឯកសារ templates/ឈ្មោះម៉ូត/ */
+const TPL = { 1: 'premium', 2: 'standard', 3: 'royal' }, TID = { 1: 'inv', 2: 'inv2', 3: 'inv3' };
+const GRX = /var G\s*=\s*\[\s*\\?["']([^"'\\]+)/;
+async function findImg(html, env, origin) {
   let tpl = 3;
   try {
     const m = html.match(/OVR_START\*\/([\s\S]*?)\/\*OVR_END/);
     if (m) {
       const o = JSON.parse(m[1]); tpl = +o.tpl || 3;
       const gl = (o['t' + tpl] || {}).gl;
-      if (gl && gl.length && typeof gl[0] === 'string') return gl[0];
+      if (gl && gl.length && typeof gl[0] === 'string') return { s: gl[0], from: 'OVR' };
     }
   } catch (e) {}
-  const id = tpl === 3 ? 'inv3' : tpl === 2 ? 'inv2' : 'inv';
-  const s = html.indexOf('id="' + id + '">');
-  if (s >= 0) {
-    const g = html.indexOf('var G=[', s);
-    if (g >= 0) { const q = html.slice(g, g + 400000).match(/var G=\[\s*\\?["']([^"'\\]+)/); if (q) return q[1]; }
+  const st = html.indexOf('id="' + TID[tpl] + '">');
+  if (st >= 0) { const q = html.slice(st).match(GRX); if (q) return { s: q[1], from: 'index.html' }; }
+  for (const f of ['script.js', 'template.html']) {
+    try {
+      const r = await env.ASSETS.fetch(new Request(origin + '/templates/' + TPL[tpl] + '/' + f));
+      if (r.status === 200) { const q = (await r.text()).match(GRX); if (q) return { s: q[1], from: 'templates/' + TPL[tpl] + '/' + f }; }
+    } catch (e) {}
   }
-  return '';
+  return { s: '', from: 'none' };
 }
 const esc = t => String(t).replace(/&/g, '&amp;').replace(/"/g, '&quot;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
 
 export default {
   async fetch(request, env) {
     const url = new URL(request.url);
-    /* រូបទីមួយនៃកម្រងរូបភាព សម្រាប់ preview */
+    /* រូបទីមួយនៃកម្រងរូបភាព សម្រាប់ preview (?debug=1 បង្ហាញប្រភព) */
     if (url.pathname === '/og-img') {
       const hr = await env.ASSETS.fetch(new Request(url.origin + '/'));
-      const s = firstImg(await hr.text());
+      const f = await findImg(await hr.text(), env, url.origin), s = f.s;
+      if (url.searchParams.has('debug')) return new Response(JSON.stringify({ from: f.from, image: s.slice(0, 120) }), { headers: { 'content-type': 'application/json' } });
       const dm = s.match(/^data:(image\/[\w.+-]+);base64,([\s\S]+)$/);
       if (dm) {
         const bin = atob(dm[2]), u8 = new Uint8Array(bin.length);
         for (let i = 0; i < bin.length; i++) u8[i] = bin.charCodeAt(i);
         return new Response(u8, { headers: { 'content-type': dm[1], 'cache-control': 'public, max-age=600' } });
       }
-      if (s) return Response.redirect(new URL(s, url.origin + '/').href, 302);
+      if (s) {
+        const ir = await env.ASSETS.fetch(new Request(new URL(s, url.origin + '/').href));
+        if (ir.status === 200) return new Response(ir.body, { headers: { 'content-type': ir.headers.get('content-type') || 'image/jpeg', 'cache-control': 'public, max-age=600' } });
+      }
       return new Response('', { status: 404 });
     }
     /* API: ចុះឈ្មោះកូដភ្ញៀវ → ឈ្មោះ (រក្សាក្នុង KV ឈ្មោះ GUESTS) */
@@ -92,7 +100,7 @@ export default {
     const title = 'សូមគោរពអញ្ជើញ ' + name;
     const desc = 'សិរីមង្គលអាពាហ៍ពិពាហ៍' + (couple ? ' ' + couple : '');
     let img = url.origin + '/assets/img-812183ca16.png';
-    if (firstImg(html)) img = url.origin + '/og-img';
+    if ((await findImg(html, env, url.origin)).s) img = url.origin + '/og-img';
     else try { const r = await env.ASSETS.fetch(new URL('/og.jpg', url.origin)); if (r.status === 200) img = url.origin + '/og.jpg'; } catch (e) {}
 
     const meta = '<meta property="og:title" content="' + esc(title) + '"><meta property="og:description" content="' + esc(desc) +
