@@ -87,9 +87,10 @@ function ogGal(){var h=invRaw(),i=h.indexOf('var G=['),e=h.indexOf('];',i);try{r
 function srcOf(id){var h=invRaw(),q=h.indexOf('id="'+id+'"'),a=h.indexOf('src="',q)+5;return h.slice(a,h.indexOf('"',a))}
 function maxG(){return window.__edt==2?6:Infinity}
 function khn(n){return String(n).replace(/[0-9]/g,function(d){return"០១២៣៤៥៦៧៨៩".charAt(d)})}
+var OGL={};function pushOg(s){var t=window.__edt||selT();if(!s||!/^data:image\//.test(s)||!/^https?:$/.test(location.protocol))return;var k=s.length+s.slice(-40);if(OGL[t]===k)return;OGL[t]=k;try{fetch('/api/og',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({t:t,d:s})}).then(function(r){if(!r.ok)delete OGL[t]}).catch(function(){delete OGL[t]})}catch(e){delete OGL[t]}}
 function rGl(){$('gl2').innerHTML=GL.map(function(s,i){return'<div class="th2"><img src="'+s+'"><button data-i="'+i+'">✕</button></div>'}).join('');
  var m=maxG(),full=GL.length>=m;$('gcn').textContent=m===Infinity?'':khn(GL.length)+' / '+khn(m)+' សន្លឹក (អតិបរមា)';
- $('gpl').style.opacity=full?'.45':'';$('gpl').style.pointerEvents=full?'none':'';$('gpf').disabled=full}
+ $('gpl').style.opacity=full?'.45':'';$('gpl').style.pointerEvents=full?'none':'';$('gpf').disabled=full;pushOg(GL[0])}
 function loadMore(b){var og=ogAg();['a1','a2'].forEach(function(k,i){$('e_'+k).value=OV[k]!==undefined?OV[k]:(b[k]!==undefined?b[k]:og.a[i])});
  GL=(OV.gl||b.gl||ogGal()).slice(0,maxG());rGl();$('qkp').src=OV.qk||b.qk||srcOf('qrk');$('qup').src=OV.qu||b.qu||srcOf('qru')}
 function agSync(){var n=OV.ai==='n',a=$('ag1'),b=$('ag0');if(!a||!b)return;[[a,!n],[b,n]].forEach(function(x){x[0].style.background=x[1]?'#a0643c':'#fff';x[0].style.color=x[1]?'#fff':'inherit';x[0].style.borderColor=x[1]?'#a0643c':'#cdbfae'})}$('ag1').onclick=function(){delete OV.ai;svOv();pvUpdate();agSync()};$('ag0').onclick=function(){OV.ai='n';svOv();pvUpdate();agSync()};function gmSync(){var w=$('gmw');if(!w)return;w.style.display=window.__tpl==3?'':'none';var c=OV.gm==='c';$('gm0').classList.toggle('on',!c);$('gm1').classList.toggle('on',c)}$('gm0').onclick=function(){delete OV.gm;svOv();pvUpdate();gmSync()};$('gm1').onclick=function(){OV.gm='c';svOv();pvUpdate();gmSync()};['a1','a2'].forEach(function(k){$('e_'+k).oninput=function(){OV.a1=$('e_a1').value;OV.a2=$('e_a2').value;svOv();pvUpdate()}});
