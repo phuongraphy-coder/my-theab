@@ -23,11 +23,11 @@ function decode(n) {
 const TPL = { 1: 'premium', 2: 'standard', 3: 'royal' }, TID = { 1: 'inv', 2: 'inv2', 3: 'inv3' };
 const GRX = /var G\s*=\s*\[\s*\\?["']([^"'\\]+)/;
 async function findImg(html, env, origin) {
-  let tpl = 3;
+  let tpl = 3, o = null;
+  try { const m = html.match(/OVR_START\*\/([\s\S]*?)\/\*OVR_END/); if (m) { o = JSON.parse(m[1]); tpl = +o.tpl || 3; } } catch (e) {}
+  if (env.GUESTS) { try { const k = await env.GUESTS.get('og' + tpl); if (k) return { s: k, from: 'KV (រូបទីមួយពី Editor)' }; } catch (e) {} }
   try {
-    const m = html.match(/OVR_START\*\/([\s\S]*?)\/\*OVR_END/);
-    if (m) {
-      const o = JSON.parse(m[1]); tpl = +o.tpl || 3;
+    if (o) {
       const gl = (o['t' + tpl] || {}).gl;
       if (gl && gl.length && typeof gl[0] === 'string') return { s: gl[0], from: 'OVR' };
     }
@@ -62,7 +62,22 @@ export default {
         const ir = await env.ASSETS.fetch(new Request(new URL(s, url.origin + '/').href));
         if (ir.status === 200) return new Response(ir.body, { headers: { 'content-type': ir.headers.get('content-type') || 'image/jpeg', 'cache-control': 'public, max-age=600' } });
       }
-      return new Response('', { status: 404 });
+      try { const r = await env.ASSETS.fetch(new Request(url.origin + '/og.jpg')); if (r.status === 200) return new Response(r.body, { headers: { 'content-type': 'image/jpeg', 'cache-control': 'public, max-age=600' } }); } catch (e) {}
+      const lg = await env.ASSETS.fetch(new Request(url.origin + '/assets/img-812183ca16.png'));
+      return new Response(lg.body, { status: lg.status, headers: { 'content-type': 'image/png' } });
+    }
+    /* Editor ផ្ញើរូបទីមួយនៃកម្រងរូបភាពមករក្សាទុក (ពី domain ខ្លួនឯងប៉ុណ្ណោះ) */
+    if (url.pathname === '/api/og' && request.method === 'POST') {
+      const J = (o, s) => new Response(JSON.stringify(o), { status: s || 200, headers: { 'content-type': 'application/json' } });
+      if (!env.GUESTS) return J({ ok: 0 }, 501);
+      const org = request.headers.get('origin');
+      if (org && org !== url.origin) return J({ ok: 0 }, 403);
+      try {
+        const d = await request.json(), t = +d.t, s = String(d.d || '');
+        if (!(t >= 1 && t <= 3) || !/^data:image\/(jpeg|png|webp);base64,/.test(s) || s.length > 4000000) return J({ ok: 0 }, 400);
+        await env.GUESTS.put('og' + t, s);
+        return J({ ok: 1 });
+      } catch (e) { return J({ ok: 0 }, 400); }
     }
     /* API: ចុះឈ្មោះកូដភ្ញៀវ → ឈ្មោះ (រក្សាក្នុង KV ឈ្មោះ GUESTS) */
     if (url.pathname === '/api/g') {
@@ -99,9 +114,7 @@ export default {
     const couple = g && b ? g + ' និង ' + b : (g || b);
     const title = 'សូមគោរពអញ្ជើញ ' + name;
     const desc = 'សិរីមង្គលអាពាហ៍ពិពាហ៍' + (couple ? ' ' + couple : '');
-    let img = url.origin + '/assets/img-812183ca16.png';
-    if ((await findImg(html, env, url.origin)).s) img = url.origin + '/og-img';
-    else try { const r = await env.ASSETS.fetch(new URL('/og.jpg', url.origin)); if (r.status === 200) img = url.origin + '/og.jpg'; } catch (e) {}
+    const img = url.origin + '/og-img';
 
     const meta = '<meta property="og:title" content="' + esc(title) + '"><meta property="og:description" content="' + esc(desc) +
       '"><meta property="og:image" content="' + esc(img) + '"><meta property="og:url" content="' + esc(request.url) +
